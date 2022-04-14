@@ -24,7 +24,7 @@ over the `mod 4` part for simplicity only.
 Make one thread on a GPU loop through and xor into one
 register.
 
-```
+```julia
 function xor_singlethread(a, b)
     for i in 1:length(a)
         b[] = b[] ⊻ a[i]
@@ -36,7 +36,7 @@ end
 The same procedure for the commutator, except now iterate one more time
 to count the number of ones at the output.
 
-```
+```julia
 function comm_singlethread(l::AbstractArray{T}, r::AbstractArray{T}, out) where {T}
 
     thread = threadIdx().x
@@ -56,5 +56,19 @@ function comm_singlethread(l::AbstractArray{T}, r::AbstractArray{T}, out) where 
 
     return
 
+end
+```
+
+## Atomic Execution
+
+```julia
+function xor_atomic(a, b)
+    return
+end
+```
+
+```julia
+function atomic_singlethread(l::AbstractArray{T}, r::AbstractArray{T}, out) where {T}
+    return
 end
 ```
